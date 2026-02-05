@@ -11,6 +11,7 @@ body{
     color: #e7e7e7;
     min-height: 100vh;
     line-height: 1.5;
+    
 }
 
 
@@ -87,9 +88,37 @@ nav a:hover{
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease;
+  animation: shake 2s infinite;
 
  
 }
+
+
+@keyframes shake{
+    0%{
+        transform: translateX(10%);
+    }
+    10%{
+        transform: translateX(-10%);
+    }
+    20%{
+        transform: translateX(10%);
+    }
+    30%{
+        transform: translateX(-10%);
+    }
+     40%{
+        transform: translateX(10%);
+    }
+    80%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(10%);
+
+    }
+}
+
 
 .liquid {
   background: linear-gradient(#ffffff 0 0) no-repeat calc(200% - var(--p, 0%))
@@ -302,3 +331,309 @@ join-us:hover{
     }
 }
 
+/* course design  */
+:root {
+      --realme-yellow: #FFD600;
+      --realme-black: #212121;
+      --realme-gray: #fafafa;
+      --realme-shadow: 0 4px 24px rgba(0,0,0,0.14);
+    }
+
+    
+    .courses-section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 10rem;
+    }
+    .courses-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      justify-content: center;
+    }
+    .course-card {
+      background: #1b1a1a;
+      border-radius: 18px;
+      padding: 28px 16px 30px 16px;
+      box-shadow: var(--realme-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 300px;
+    }
+    .course-card:hover {
+      transform: translateY(-7px) scale(1.035);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+    }
+    .course-icon {
+      width: 80px;
+      margin-bottom: 15px;
+      /* filter: drop-shadow(0 4px 8px #ffd60055); */
+    }
+    .course-name {
+      font-size: 1.1rem;
+      color: var(--realme-yellow);
+      font-weight: bold;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .course-desc {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 24px;
+      min-height: 48px;
+    }
+    .learn-btn {
+      background: var(--realme-yellow);
+      color: var(--realme-black);
+      padding: 11px 26px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #ffd60030;
+      transition: background 0.2s;
+      text-decoration: none;
+      outline: none;
+      display: inline-block;
+    }
+    .learn-btn:hover {
+      background: #ffe655;
+    }
+    @media (max-width: 500px) {
+      .courses-section {
+        padding: 18px 4vw;
+      }
+      .course-card {
+        padding: 16px 10px 20px 10px;
+        min-height: 220px;
+      }
+
+
+    }
+
+    #join{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    #join input,button{
+        width: 20rem;
+
+    }
+a{
+    text-decoration: none;
+}
+
+
+/* university card container */
+
+.card-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 40px 0 40px 0;
+      min-height: 100vh;
+    }
+    .university-card {
+      background: #232126;
+      border: 1.5px solid #312c32;
+      border-radius: 16px;
+      padding: 24px 20px 22px 20px;
+      width: 280px;
+      max-width: 90vw;
+      box-shadow: 0 4px 20px #0f0d12b8, 0 1.5px 8px #ff882230;
+      text-align: center;
+      transition: 
+        transform 0.25s cubic-bezier(.4,2,.6,1),
+        box-shadow 0.22s cubic-bezier(.44,.76,.39,1.33),
+        border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .university-card::after {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%,-50%) scale(0.85);
+      width: 110%; height: 110%;
+      background: radial-gradient(circle at 50% 50%, #ff882205 40%, transparent 100%);
+      z-index: 0;
+      transition: background 0.3s;
+      pointer-events: none;
+    }
+    .university-card:hover, .university-card:focus {
+      transform: translateY(-12px) scale(1.028);
+      box-shadow: 0 9px 36px #ff882288, 0 3px 14px #0005;
+      border-color: #ff8822;
+      outline: none;
+    }
+    .university-card:hover::after {
+      background: radial-gradient(circle at 50% 50%, #ff882229 50%, transparent 110%);
+      transition: background 0.22s;
+    }
+    .university-card img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      background: #1c1a1e;
+      padding: 2.5px;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      border: 3px solid #ff8822;
+      box-shadow: 0 0 0px 2px #25222a88;
+      transition: border 0.24s;
+    }
+    .university-card h3 {
+      color: #ff8822;
+      margin: 6px 0 10px 0;
+      font-size: 1.18em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .university-card p {
+      color: #e3e3e5;
+      font-size: 1em;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.01em;
+    }
+    .university-card .stars {
+      color: #ffc041;
+      font-size: 1.14em;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+      display: block;
+      animation: starsGlow 1.1s;
+    }
+    @keyframes starsGlow {
+      0%   { opacity: 0; transform: scale(0.8);}
+      70%  { opacity: 1; transform: scale(1.2);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    /* Subtle scaling on click */
+    .university-card:active {
+      transform: scale(0.98) translateY(-3px);
+    }
+
+/* review container design */
+.reviews-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      flex-direction: column;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      margin-top: 10rem;
+    }
+
+    .review-cards{
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        min-height: max-content;
+       
+     
+    }
+    h1{
+        position: relative;
+    }
+    .review-card {
+      background: #232126;
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      width: 350px;
+      box-shadow: 0 2px 10px #0004;
+      margin: 12px 0;
+    }
+    .review-img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+      border: 4px solid #1c1a1e;
+      background: #353145;
+    }
+    .review-content h4 {
+      margin: 2px 0 5px 0;
+      font-weight: 600;
+      color: #ff8822;
+    }
+    .stars {
+      color: #ffb400;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+    .review-content p {
+      margin: 0;
+      color: #c4c4c4;
+    }
+    /* Review Form */
+    .review-form-container {
+      max-width: 370px;
+      margin: 2.5em auto 0 auto;
+      padding: 20px;
+      background: #232126;
+      border-radius: 14px;
+      box-shadow: 0 1px 8px #0005;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-form-container h3 {
+      color: #ff8822;
+      margin-bottom: 12px;
+    }
+    .review-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.99em;
+    }
+    .review-form input,
+    .review-form textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 12px;
+      background: #19171c;
+      color: #fffb;
+      font-size: 1em;
+    }
+    .review-form input[type="file"] {
+      padding: 3px 0;
+      color: #bbb;
+    }
+    .review-form button {
+      background: #ff8822;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 19px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 200ms;
+    }
+    .review-form button:hover {
+      background: #ff5d00;
+    }
