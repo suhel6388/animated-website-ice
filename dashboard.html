@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin Dashboard • Live Students + Results</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     :root{
       --bg1:#0b1220; --bg2:#101a33;
@@ -97,16 +98,36 @@
     tr:hover td{background:rgba(255,255,255,.06)}
     .msg{margin:10px 0 0; font-size:12px; color:rgba(255,255,255,.75)}
     .ok{color:rgba(39,226,106,.95)} .bad{color:rgba(255,77,77,.95)}
+    #logout{
+      width: 4rem;
+      height: 2rem;
+      border: none;
+      border-radius: 0.4rem;
+      position: absolute;
+      top: 1;
+      right: 4rem;
+      background: none;
+      border: 2px solid whitesmoke;
+      color: white;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      &&:active{
+        background-color: #0b1220;
+      }
+
+
+    }
 
    
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap" data-aos="fade-left" data-aos-delay="400">
     <header>
       <div>
         <h1>Admin Dashboard</h1>
-        <button onclick="logout()">Logout</button>
+        <button onclick="logout()" id="logout">Logout</button>
         <p class="sub">Glassmorphism UI • Live student counting • Add student result</p>
       </div>
       <div class="pill"><span class="dot"></span>Live</div>
@@ -114,7 +135,7 @@
 
     <div class="grid">
       <!-- Live Counting + Table -->
-      <section class="card">
+      <section class="card" data-aos="fade-left" data-aos-delay="600">
         <div class="ch">
           <h2>Live Student Counting</h2>
           <div class="pill">Updated: <span id="lastUpdated">—</span></div>
@@ -164,41 +185,45 @@
           <form id="resultForm">
             <div class="field">
               <label>Registration Number</label>
-              <input name="regNo" placeholder="REG-2026-001" required />
+              <input id="regName" name="regNo" placeholder="REG-2026-001" required />
             </div>
             <div class="field">
               <label>Roll Number</label>
-              <input name="rollNo" placeholder="17" required />
+              <input id="roll_no" name="rollNo" placeholder="17" required />
             </div>
 
             <div class="field">
               <label>Name</label>
-              <input name="name" placeholder="Student Name" required />
+              <input id="name" name="name" placeholder="Student Name" required />
             </div>
             <div class="field">
               <label>Father Name</label>
-              <input name="fatherName" placeholder="Father Name" required />
+              <input id="f_name" name="fatherName" placeholder="Father Name" required />
             </div>
 
             <div class="field">
               <label>Mother Name</label>
-              <input name="motherName" placeholder="Mother Name" required />
+              <input id="m_name" name="motherName" placeholder="Mother Name" required />
             </div>
             <div class="field">
               <label>Total Marks</label>
-              <input name="totalMarks" type="number" min="1" placeholder="1100" required />
+              <input id="t_marks" name="totalMarks" type="number" min="1" placeholder="1100" required />
             </div>
 
             <div class="field">
               <label>Obtain Marks</label>
-              <input name="obtainedMarks" type="number" min="0" placeholder="885" required />
+              <input id="obt_marks" name="obtainedMarks" type="number" min="0" placeholder="885" required />
             </div>
             <div class="field">
               <label>Grade</label>
-              <select name="grade" required>
+              <select name="grade" id="grade" required >
                 <option value="" selected disabled>Select</option>
-                <option>A+</option><option>A</option><option>B</option>
-                <option>C</option><option>D</option><option>F</option>
+                <option value="A+"  >A+</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="F">F</option>
               </select>
             </div>
 
@@ -213,13 +238,19 @@
       </aside>
     </div>
   </div>
+ 
+
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 <script src="supabase/supabase.js"></script>
 <script src="supabase/auth.js"></script>
 <script src="supabase/guard.js"></script>
+<script src="supabase/add_table.js"></script>
 
 
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   
 </body>
 

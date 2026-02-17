@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         * {
             margin: 0;
@@ -24,6 +25,7 @@
 
         .glass-card {
             width: 350px;
+            height: 25rem;
             padding: 30px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.15);
@@ -32,6 +34,8 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
             color: orange;
+            padding-top: 4rem;
+
         }
 
         .glass-card h2 {
@@ -101,12 +105,28 @@
         #password{
             padding-right: 2rem;
         }
+        #arrow{
+            position: absolute;
+            top: 1rem;
+            right: 50%;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 1rem;
+            border: none;
+            background-color: orange;
+            cursor: pointer;
+            &&:active{
+                background-color: rgb(215, 143, 8);
+            }
+
+        }
      
     </style>
 </head>
 <body>
 
-    <div class="glass-card">
+    <div class="glass-card" data-aos="fade-left" data-aos-delay="600">
+        <button id="arrow"><a href="index.html"><i class="fa-solid fa-arrow-left"></i></a></button>
         <h2>Login</h2>
         <form id="loginform">
         <span style="display: flex; margin-bottom: 1rem;">username / email id</span>
@@ -118,7 +138,7 @@
         <div class="input-box">
             <span style="display: flex; margin-bottom: 1rem;">Password</span>
             <input type="password" placeholder="Password" id="password" maxlength="20" required>
-             <span id="togglePassword"  >👁️</span>
+             <span id="togglePassword"  onclick="togglePassword2()">👁️</span>
         </div>
 
         <button type="submit" class="login-btn" onclick="signInWithPassword()">Login</button>
@@ -156,7 +176,10 @@
     <script src="supabase/supabase.js"></script>
     <script src="supabase/auth.js"></script>
     <script src="supabase/guard.js"></script>
-   
+     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
     
 
