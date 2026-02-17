@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000, #2a183a);
+        }
+
+        .glass-card {
+            width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            color: orange;
+        }
+
+        .glass-card h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .input-box input::placeholder {
+            color: #e0e0e0;
+            word-spacing: 20px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background: orange;
+            color: #281717;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #f1f1f1;
+        }
+
+        .extra {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .extra a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .extra a:hover {
+            text-decoration: underline;
+        }
+        #togglePassword{
+            display: flex;
+            cursor: pointer;
+            position: absolute;
+            right: 2rem;
+            bottom: 8rem;
+        }
+        #password{
+            padding-right: 2rem;
+        }
+     
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <h2>Login</h2>
+        <form id="loginform">
+        <span style="display: flex; margin-bottom: 1rem;">username / email id</span>
+
+        <div class="input-box">
+            <input type="email" placeholder="Username" maxlength="30" id="email" required>
+        </div>
+
+        <div class="input-box">
+            <span style="display: flex; margin-bottom: 1rem;">Password</span>
+            <input type="password" placeholder="Password" id="password" maxlength="20" required>
+             <span id="togglePassword"  >👁️</span>
+        </div>
+
+        <button type="submit" class="login-btn" onclick="signInWithPassword()">Login</button>
+
+        </form>
+        <p id="msg"></p>
+
+        <div class="extra">
+            <p>Forgot Password? <a href="#">Click Here</a></p>
+        </div>
+    </div>
+    <script>
+    let eyeicon = document.querySelector("#togglePassword")
+    let password = document.querySelector("#password")
+    function togglePassword2(){
+        if (password.type === "password" ) {
+            
+            password.type = "text";
+            eyeicon.innerHTML = "🙈";
+
+
+
+
+            
+        }
+
+        else{
+            password.type = "password";
+            eyeicon.innerHTML = "👁️"; 
+
+        }
+}
+    </script>
+     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="supabase/supabase.js"></script>
+    <script src="supabase/auth.js"></script>
+    <script src="supabase/guard.js"></script>
+   
+
+    
+
+</body>
+</html>

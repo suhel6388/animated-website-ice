@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard • Live Students + Results</title>
+  <style>
+    :root{
+      --bg1:#0b1220; --bg2:#101a33;
+      --glass:rgba(255,255,255,.10);
+      --glass2:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.18);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --orange:#ff7a18; --orange2:#ff9b3d;
+      --shadow:0 18px 60px rgba(0,0,0,.45);
+      --r:18px; --r2:14px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; font-family:var(--font); color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(255,122,24,.20), transparent 55%),
+        radial-gradient(900px 520px at 90% 15%, rgba(80,140,255,.22), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 60px}
+    header{display:flex; justify-content:space-between; gap:16px; align-items:flex-start}
+    h1{margin:0; font-size:26px}
+    .sub{margin:6px 0 0; color:var(--muted); font-size:14px}
+    .pill{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      padding:6px 10px; border-radius:999px; font-size:12px;
+      display:inline-flex; gap:8px; align-items:center; white-space:nowrap;
+    }
+    .dot{width:8px;height:8px;border-radius:50%;background:#27e26a; box-shadow:0 0 0 4px rgba(39,226,106,.15)}
+    .grid{display:grid; grid-template-columns:1.05fr .95fr; gap:18px; margin-top:18px}
+    @media(max-width:980px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:linear-gradient(180deg,var(--glass),var(--glass2));
+      border:1px solid var(--stroke);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      overflow:hidden;
+    }
+    .ch{padding:16px; border-bottom:1px solid rgba(255,255,255,.10); display:flex; justify-content:space-between; align-items:center; gap:10px}
+    .ch h2{margin:0; font-size:16px}
+    .cb{padding:16px}
+
+    .stats{display:flex; gap:14px; flex-wrap:wrap}
+    .stat{
+      flex:1 1 240px; min-height:96px;
+      border-radius:var(--r2);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      padding:14px;
+    }
+    .k{font-size:12px; color:var(--muted)}
+    .v{margin-top:6px; font-size:34px; font-weight:800}
+    .s{margin-top:6px; font-size:12px; color:rgba(255,255,255,.75)}
+
+    form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media(max-width:640px){form{grid-template-columns:1fr}}
+    .field{display:flex; flex-direction:column; gap:6px}
+    label{font-size:12px; color:rgba(255,255,255,.80)}
+    input,select{
+      padding:12px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.25); color:var(--text);
+      outline:none;
+    }
+    input:focus,select:focus{border-color:rgba(255,122,24,.65); box-shadow:0 0 0 4px rgba(255,122,24,.18)}
+    .span2{grid-column:span 2}
+    @media(max-width:640px){.span2{grid-column:span 1}}
+    .actions{display:flex; justify-content:flex-end; gap:10px}
+    .btn{
+      border:0; cursor:pointer; border-radius:14px; padding:12px 14px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .btn-primary{
+      color:#1b0d02;
+      background:linear-gradient(180deg,var(--orange2),var(--orange));
+      box-shadow:0 12px 22px rgba(255,122,24,.25);
+    }
+    .btn-ghost{
+      color:rgba(255,255,255,.88);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    table{width:100%; border-collapse:collapse; border:1px solid rgba(255,255,255,.12); border-radius:var(--r2); overflow:hidden; background:rgba(255,255,255,.05)}
+    th,td{padding:10px 12px; font-size:13px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left}
+    th{font-size:12px; color:rgba(255,255,255,.78); background:rgba(0,0,0,.18); border-bottom:1px solid rgba(255,255,255,.10)}
+    tr:hover td{background:rgba(255,255,255,.06)}
+    .msg{margin:10px 0 0; font-size:12px; color:rgba(255,255,255,.75)}
+    .ok{color:rgba(39,226,106,.95)} .bad{color:rgba(255,77,77,.95)}
+
+   
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Admin Dashboard</h1>
+        <button onclick="logout()">Logout</button>
+        <p class="sub">Glassmorphism UI • Live student counting • Add student result</p>
+      </div>
+      <div class="pill"><span class="dot"></span>Live</div>
+    </header>
+
+    <div class="grid">
+      <!-- Live Counting + Table -->
+      <section class="card">
+        <div class="ch">
+          <h2>Live Student Counting</h2>
+          <div class="pill">Updated: <span id="lastUpdated">—</span></div>
+        </div>
+        <div class="cb">
+          <div class="stats">
+            <div class="stat">
+              <div class="k">Students Present (Live)</div>
+              <div class="v" id="liveCount">5</div>
+              <div class="s">Demo updates every 2 seconds</div>
+            </div>
+            <div class="stat">
+              <div class="k">Results Added</div>
+              <div class="v" id="addedCount">5</div>
+              <div class="s">Increases on form submit</div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px; overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Registration #</th>
+                  <th>Roll #</th>
+                  <th>Name</th>
+                  <th>Father</th>
+                  <th>Mother</th>
+                  <th>Total</th>
+                  <th>Obtained</th>
+                  <th>Grade</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+          <p class="msg">Note: Data is stored in-memory (front-end demo). Connect to DB/API for real use.</p>
+        </div>
+      </section>
+
+      <!-- Add Result Form -->
+      <aside class="card">
+        <div class="ch">
+          <h2>Add Student Result</h2>
+          <div class="pill">Form</div>
+        </div>
+        <div class="cb">
+          <form id="resultForm">
+            <div class="field">
+              <label>Registration Number</label>
+              <input name="regNo" placeholder="REG-2026-001" required />
+            </div>
+            <div class="field">
+              <label>Roll Number</label>
+              <input name="rollNo" placeholder="17" required />
+            </div>
+
+            <div class="field">
+              <label>Name</label>
+              <input name="name" placeholder="Student Name" required />
+            </div>
+            <div class="field">
+              <label>Father Name</label>
+              <input name="fatherName" placeholder="Father Name" required />
+            </div>
+
+            <div class="field">
+              <label>Mother Name</label>
+              <input name="motherName" placeholder="Mother Name" required />
+            </div>
+            <div class="field">
+              <label>Total Marks</label>
+              <input name="totalMarks" type="number" min="1" placeholder="1100" required />
+            </div>
+
+            <div class="field">
+              <label>Obtain Marks</label>
+              <input name="obtainedMarks" type="number" min="0" placeholder="885" required />
+            </div>
+            <div class="field">
+              <label>Grade</label>
+              <select name="grade" required>
+                <option value="" selected disabled>Select</option>
+                <option>A+</option><option>A</option><option>B</option>
+                <option>C</option><option>D</option><option>F</option>
+              </select>
+            </div>
+
+            <div class="actions span2">
+              <button class="btn btn-ghost" type="reset">Clear</button>
+              <button class="btn btn-primary" type="submit">Add Result</button>
+            </div>
+
+            <p id="formMsg" class="msg span2"></p>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="supabase/supabase.js"></script>
+<script src="supabase/auth.js"></script>
+<script src="supabase/guard.js"></script>
+
+
+
+  
+</body>
+
+

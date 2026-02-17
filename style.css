@@ -110,8 +110,24 @@ nav a:hover{
      40%{
         transform: translateX(10%);
     }
-    80%{
+    50%{
         transform: translateX(-10%);
+    }
+    60%{
+        transform: translateX(10%);
+
+    }
+    70%{
+        transform: translateX(-10%);
+
+    }
+    80%{
+        transform: translateX(10%);
+
+    }
+    90%{
+        transform: translateX(-10%);
+
     }
     100%{
         transform: translateX(10%);
@@ -445,12 +461,22 @@ a{
 .card-container {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 28px;
+      gap: 2rem;
       margin: 40px 0 40px 0;
       min-height: 100vh;
+    }
+    
+
+    .cards-university{
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+     
+
+      
     }
     .university-card {
       background: #232126;
@@ -533,6 +559,20 @@ a{
       transform: scale(0.98) translateY(-3px);
     }
 
+
+
+    @media (max-width: 860px){
+     
+      .card-container h1{
+        font-size: larger;
+
+      }
+      .cards-university{
+        flex-direction: column;
+      }
+
+    }
+
 /* review container design */
 .reviews-container {
       display: flex;
@@ -542,7 +582,8 @@ a{
       flex-direction: column;
       flex-wrap: wrap;
       margin-bottom: 32px;
-      margin-top: 10rem;
+      margin-top: 0.4rem;
+      padding: 2rem 1rem ;
     }
 
     .review-cards{
@@ -550,6 +591,7 @@ a{
         gap: 32px;
         flex-wrap: wrap;
         min-height: max-content;
+        margin-left: 10rem;
        
      
     }
