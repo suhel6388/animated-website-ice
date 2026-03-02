@@ -316,6 +316,12 @@ join-us:hover{
 
     }
 
+    btn-signing liquid{
+      &&:hover{
+        color: #000000;
+      }
+    }
+
     .content{
         margin-top: 25rem;
 

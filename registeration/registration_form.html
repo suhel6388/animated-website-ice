@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="image_section.css">
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center p-6">
+
+  <div class="w-full max-w-4xl backdrop-blur-xl bg-white/10 border border-white/20 shadow-2xl rounded-2xl p-8" style="display: flex; flex-direction: column;">
+    
+    <h2 class="text-3xl font-bold text-center text-white mb-8">
+      Student Registration Form
+    </h2>
+
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" style="display: flex; flex-direction: column;">
+
+      <!-- Registration ID -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Registration ID</label>
+        <input type="text" name="registration_id"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Registration Date -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Registration Date</label>
+        <input type="date" name="registration_date"  id="reg_date"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Name + Upload Image (SIDE BY SIDE) -->
+      <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+        
+        <!-- Name -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-200 font-semibold mb-1">Student Name</label>
+          <input type="text" name="name"
+            class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        
+
+      </div>
+
+      <!-- Father Name -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Father Name</label>
+        <input type="text" name="father_name"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Mother Name -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Mother Name</label>
+        <input type="text" name="mother_name"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Gender -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Gender</label>
+        <select name="gender"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <option class="text-black">Select Gender</option>
+          <option class="text-black">Male</option>
+          <option class="text-black">Female</option>
+          <option class="text-black">Other</option>
+        </select>
+      </div>
+
+      <!-- DOB -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Date of Birth</label>
+        <input type="date" name="dob"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Aadhaar -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Aadhaar Number</label>
+        <input type="text" name="adhar_number"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Qualification -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Qualification</label>
+        <input type="text" name="qualification"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Course -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Course</label>
+        <input type="text" name="course"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Registration Fees -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Registration Fees</label>
+        <input type="number" name="registration_fees"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      <!-- Course Fees -->
+      <div>
+        <label class="block text-gray-200 font-semibold mb-1">Course Fees</label>
+        <input type="number" name="course_fees"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500">
+      </div>
+
+      
+
+      <!-- Address -->
+      <div class="md:col-span-2">
+        <label class="block text-gray-200 font-semibold mb-1">Address</label>
+        <textarea name="address" rows="3"
+          class="w-full px-4 py-2 rounded-xl bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+      </div>
+
+  <!-- upload image section -->
+  
+     <div class="max-w-5xl mx-auto
+              bg-white/10 backdrop-blur-xl
+              border border-white/20
+              rounded-2xl shadow-2xl
+              p-6 text-white">
+
+    <!-- Header -->
+    <div class="grid md:grid-cols-2 gap-6 items-start">
+
+      <!-- Left Side -->
+      <div>
+        <h2 class="text-lg font-semibold mb-3">
+          7.3 Upload Photo / फोटो अपलोड करें <span class="text-red-400">*</span>
+        </h2>
+
+        <!-- File Input -->
+        <input type="file"
+          class="w-full
+                 file:mr-4 file:py-2 file:px-4
+                 file:rounded-xl file:border-0
+                 file:bg-orange-500 file:text-white
+                 hover:file:bg-orange-600
+                 file:cursor-pointer
+                 text-sm
+                 bg-white/5
+                 border border-white/20
+                 rounded-xl p-2" />
+
+        <!-- Instructions -->
+        <div class="text-xs text-gray-300 mt-4 space-y-1 leading-relaxed">
+          <p>(Only JPEG/JPG image allowed with the size 5 KB to 50 KB)</p>
+          <p>Dimension: 132×170 pixels, DPI 96–300</p>
+          <p>(i) Professional colour photo with white background</p>
+          <p>(ii) Face should be clearly visible, no goggles</p>
+        </div>
+      </div>
+
+      <!-- Right Side Preview -->
+      <div class="flex flex-col items-center gap-4">
+
+        <!-- Image Preview Box -->
+        <div id="previewBox"
+             class="w-[132px] h-[170px]
+                    bg-white/5
+                    border-2 border-dashed border-white/30
+                    rounded-xl
+                    flex items-center justify-center
+                    overflow-hidden">
+
+          <span class="text-gray-400 text-sm">Photo</span>
+          <img id="previewImg" class="hidden w-full h-full object-cover"/>
+        </div>
+
+        <!-- Help Button -->
+        <button
+          class="px-5 py-2 rounded-xl
+                 bg-gradient-to-r from-orange-500 to-orange-600
+                 hover:from-orange-600 hover:to-orange-700
+                 transition-all duration-300
+                 font-semibold shadow-lg">
+          Help/Tip to Resize Image
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+   
+      
+      
+<div class="btns">
+  <button class="group flex items-center gap-2 px-6 py-3
+           bg-white/10 backdrop-blur-lg
+           border border-white/20
+           rounded-2xl
+           text-white font-semibold
+           shadow-lg shadow-black/30
+           hover:bg-white/20
+           hover:scale-105
+           active:scale-95
+           transition-all duration-300 " type="button">Back</button>
+        <button type="submit"
+          class="px-10 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-xl shadow-lg transition duration-300">
+          Submit & Continue
+        </button>
+</div>
+          
+         
+      </div>
+
+    </form>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>

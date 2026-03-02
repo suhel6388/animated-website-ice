@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glassmorphism Upload UI (Dark)</title>
+  <style>
+    :root{
+      --bg1:#070A12;
+      --bg2:#0B1B2D;
+      --glass:rgba(255,255,255,.08);
+      --glass2:rgba(255,255,255,.12);
+      --stroke:rgba(255,255,255,.18);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.55);
+      --orange:#ff7a18;
+      --orange2:#ff9a3c;
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(255,122,24,.18), transparent 55%),
+        radial-gradient(1000px 600px at 80% 30%, rgba(79,172,254,.16), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      padding: 28px;
+    }
+
+    .wrap{
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
+
+    .card-header{
+      padding: 18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .title{
+      font-size: 16px;
+      font-weight: 650;
+      letter-spacing: .2px;
+    }
+    .sub{
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 3px;
+    }
+
+    .top-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      appearance:none;
+      border: 1px solid rgba(255,122,24,.45);
+      background: linear-gradient(180deg, rgba(255,122,24,.98), rgba(255,122,24,.82));
+      color: #1b0d02;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(255,122,24,.22);
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.05); }
+    .btn:active{ transform: translateY(0px); filter: brightness(.98); }
+    .btn.secondary{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    /* Table-like layout */
+    .rows{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 58% 42%;
+      gap:0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      min-height: 150px;
+    }
+    .row:first-child{ border-top: none; }
+
+    .cell{
+      padding: 16px 18px;
+    }
+
+    .left{
+      border-right: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .right{
+      background: rgba(255,255,255,.02);
+      position: relative;
+    }
+
+    .label-line{
+      display:flex;
+      gap:10px;
+      align-items:baseline;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .no{
+      opacity:.85;
+      font-weight:700;
+      min-width: 36px;
+    }
+    label{
+      font-weight: 650;
+    }
+    .req{
+      color: #ff4d4d;
+      font-weight: 800;
+      margin-left: 4px;
+    }
+
+    /* Custom file input (glass) */
+    .file{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin: 10px 0 8px;
+    }
+    input[type="file"]{
+      width: 100%;
+      max-width: 420px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.25);
+      color: var(--muted);
+      outline: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    input[type="file"]::file-selector-button{
+      border: 1px solid rgba(255,122,24,.55);
+      background: linear-gradient(180deg, rgba(255,122,24,.95), rgba(255,122,24,.78));
+      color: #1b0d02;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 750;
+      margin-right: 12px;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+    .hint p{ margin: 6px 0; }
+    .hint .small{
+      color: var(--muted2);
+    }
+
+    .preview-wrap{
+      height: 100%;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .preview-top{
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .preview{
+      flex: 1;
+      border-radius: 14px;
+      border: 1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position: relative;
+      overflow:hidden;
+      min-height: 110px;
+    }
+
+    .preview img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display:none;
+    }
+
+    .placeholder{
+      text-align:center;
+      color: var(--muted2);
+      font-size: 13px;
+      padding: 18px;
+    }
+    .placeholder strong{
+      color: var(--muted);
+      display:block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .foot{
+      padding: 14px 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      justify-content:flex-end;
+      gap:10px;
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 860px){
+      .row{ grid-template-columns: 1fr; }
+      .left{ border-right: none; border-bottom: 1px solid rgba(255,255,255,.10); }
+      .preview-top{ justify-content:flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="title">Uploads (Glassmorphism • Dark)</div>
+          <div class="sub">Photo, signature and thumb impression — buttons in orange.</div>
+        </div>
+        <div class="top-actions">
+          <button class="btn secondary" type="button" onclick="alert('Demo: show guidelines or open generator link')">
+            Click here to generate Apaar Id
+          </button>
+          <button class="btn" type="button" onclick="alert('Demo: open resize help')">
+            Help/Tip to Resize Image
+          </button>
+        </div>
+      </div>
+
+      <div class="rows">
+
+        <!-- 7.3 Photo -->
+        <section class="row">
+          <div class="cell left">
+            <div class="label-line">
+              <div class="no">7.3</div>
+              <label for="photo">Upload Photo / फोटो अपलोड करें<span class="req">*</span></label>
+            </div>
+
+            <div class="file">
+              <input id="photo" type="file" accept="image/jpeg,image/jpg" />
+            </div>
+
+            <div class="hint">
+              <p>(Only JPEG/JPG image allowed with the size 5 KB to 50 KB, Dimension should be 132x170 pixels and DPI 96 to 300)</p>
+              <p class="small">(i) The colour photos taken professionally (not on a mobile phone) during the last six months with white background should be used.</p>
+              <p class="small">(ii) The facial features should be clearly visible and no goggles; no part of face should be covered.</p>
+            </div>
+          </div>
+
+          <div class="cell right">
+            <div class="preview-wrap">
+              <div class="preview-top">
+                <button class="btn secondary" type="button" onclick="clearPreview('photo')">Clear</button>
+                <button class="btn" type="button" onclick="alert('Demo: run validate/resize flow')">Validate</button>
+              </div>
+              <div class="preview" id="photoPreviewBox">
+                <img id="photoPreview" alt="Photo Preview" />
+                <div class="placeholder" id="photoPlaceholder">
+                  Photo
+                  <strong>Preview will appear here</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7.4 Signature -->
+        <section class="row">
+          <div class="cell left">
+            <div class="label-line">
+              <div class="no">7.4</div>
+              <label for="sign">Upload Signature / हस्ताक्षर अपलोड करें<span class="req">*</span></label>
+            </div>
+
+            <div class="file">
+              <input id="sign" type="file" accept="image/jpeg,image/jpg" />
+            </div>
+
+            <div class="hint">
+              <p>(Only JPEG/JPG image allowed with the size 5 KB to 20 KB, Dimension should be 170x132 pixels and DPI 96 to 200)</p>
+              <p class="small">(i) Signature should be taken on white paper using black/blue pen.</p>
+              <p class="small">(ii) Image should not be blurred or smudged.</p>
+            </div>
+          </div>
+
+          <div class="cell right">
+            <div class="preview-wrap">
+              <div class="preview-top">
+                <button class="btn secondary" type="button" onclick="clearPreview('sign')">Clear</button>
+                <button class="btn" type="button" onclick="alert('Demo: run validate/resize flow')">Validate</button>
+              </div>
+              <div class="preview" id="signPreviewBox">
+                <img id="signPreview" alt="Signature Preview" />
+                <div class="placeholder" id="signPlaceholder">
+                  Signature
+                  <strong>Preview will appear here</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7.5 Left Thumb -->
+        <section class="row">
+          <div class="cell left">
+            <div class="label-line">
+              <div class="no">7.5</div>
+              <label for="thumb">Upload left thumb impression / बाएं हाथ के अंगूठे का निशान अपलोड करें<span class="req">*</span></label>
+            </div>
+
+            <div class="file">
+              <input id="thumb" type="file" accept="image/jpeg,image/jpg" />
+            </div>
+
+            <div class="hint">
+              <p>(Only JPEG/JPG image allowed with the size 5 KB to 20 KB, Dimension should be 170x132 pixels and DPI 96 to 200)</p>
+              <p class="small">(i) Left thumb impression should be taken on white paper using black/blue ink.</p>
+              <p class="small">(ii) Image should not be blurred or smudged.</p>
+            </div>
+          </div>
+
+          <div class="cell right">
+            <div class="preview-wrap">
+              <div class="preview-top">
+                <button class="btn secondary" type="button" onclick="clearPreview('thumb')">Clear</button>
+                <button class="btn" type="button" onclick="alert('Demo: run validate/resize flow')">Validate</button>
+              </div>
+              <div class="preview" id="thumbPreviewBox">
+                <img id="thumbPreview" alt="Left Thumb Impression Preview" />
+                <div class="placeholder" id="thumbPlaceholder">
+                  Left Thumb Impression
+                  <strong>Preview will appear here</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="foot">
+        <button class="btn secondary" type="button" onclick="alert('Demo: go back')">Back</button>
+        <button class="btn" type="button" onclick="alert('Demo: save & continue')">Save & Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function wirePreview(inputId){
+      const input = document.getElementById(inputId);
+      const img = document.getElementById(inputId + "Preview");
+      const ph = document.getElementById(inputId + "Placeholder");
+
+      input.addEventListener("change", () => {
+        const file = input.files && input.files[0];
+        if(!file){
+          img.style.display = "none";
+          ph.style.display = "block";
+          img.src = "";
+          return;
+        }
+        const url = URL.createObjectURL(file);
+        img.src = url;
+        img.style.display = "block";
+        ph.style.display = "none";
+      });
+    }
+
+    function clearPreview(inputId){
+      const input = document.getElementById(inputId);
+      const img = document.getElementById(inputId + "Preview");
+      const ph = document.getElementById(inputId + "Placeholder");
+
+      input.value = "";
+      img.src = "";
+      img.style.display = "none";
+      ph.style.display = "block";
+    }
+
+    ["photo","sign","thumb"].forEach(wirePreview);
+  </script>
+</body>
+</html>

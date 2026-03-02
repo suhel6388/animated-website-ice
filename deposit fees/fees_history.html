@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fees Deposit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  background:#0f172a;
+  color:white;
+  padding:20px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1000px;
+  margin:auto;
+  background:#1e293b;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+/* ===== TITLE ===== */
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+/* ===== FORM GRID ===== */
+form{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+/* ===== INPUTS ===== */
+.input-box{
+  width:100%;
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #334155;
+  background:#020617;
+  color:white;
+  outline:none;
+  transition:0.3s;
+}
+
+.input-box:focus{
+  border-color:orange;
+  box-shadow:0 0 8px rgba(255,165,0,0.5);
+}
+
+/* ===== BUTTON ===== */
+button{
+  grid-column:span 2;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:orange;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#ff7a00;
+  transform:translateY(-1px);
+}
+
+/* ===== TABLE ===== */
+.table-wrapper{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:25px;
+  min-width:700px;
+}
+
+th,td{
+  padding:12px;
+  text-align:center;
+  border-bottom:1px solid #334155;
+}
+
+th{
+  background:#020617;
+}
+
+tr:hover{
+  background:#334155;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(60%) sepia(90%) saturate(500%) hue-rotate(350deg);
+}
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  form{
+    grid-template-columns:1fr;
+  }
+
+  button{
+    grid-column:span 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Fees Deposit Form</h2>
+
+  <form id="feesForm">
+    <input class="input-box" type="text" id="name" placeholder="Student Name" required>
+    <input class="input-box" type="text" id="course" placeholder="Course" required>
+
+    <input class="input-box" type="number" id="amount" placeholder="Deposit Amount" required>
+
+    <select class="input-box" id="paymentMode" required>
+      <option value="">Select Payment Mode</option>
+      <option>Cash</option>
+      <option>UPI</option>
+      <option>Bank Transfer</option>
+      <option>Card</option>
+    </select>
+
+    <input class="input-box" type="text" id="depositBy" placeholder="Deposit By" required>
+    <input class="input-box" type="date" id="date" style="color: white;">
+
+    <button type="submit">Deposit Fees</button>
+  </form>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Amount</th>
+          <th>Payment Mode</th>
+          <th>Deposit By</th>
+        </tr>
+      </thead>
+      <tbody id="history"></tbody>
+    </table>
+  </div>
+</div>
+
+
+<script src="supabase.js"></script>
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

@@ -118,8 +118,13 @@
 
 
     }
-
-   
+option:first-child{
+  color: grey;
+}
+   #grade,input{
+    color: var(--text);
+    background-color: var(--bg2);
+   }
   </style>
 </head>
 <body>
@@ -163,6 +168,8 @@
                   <th>Name</th>
                   <th>Father</th>
                   <th>Mother</th>
+                  <th>Course</th>
+                  <th>Duration</th>
                   <th>Total</th>
                   <th>Obtained</th>
                   <th>Grade</th>
@@ -208,6 +215,14 @@
             <div class="field">
               <label>Total Marks</label>
               <input id="t_marks" name="totalMarks" type="number" min="1" placeholder="1100" required />
+            </div>
+            <div class="field">
+              <label>Course Name</label>
+              <input id="course_name" name="totalMarks" type="number" min="1" placeholder="1100" required />
+            </div>
+              <div class="field">
+              <label>Course Duration (In Month)</label>
+              <input id="course_duration" name="totalMarks" type="number" min="1" placeholder="Duration in Month" required />
             </div>
 
             <div class="field">
