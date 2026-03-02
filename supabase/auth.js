@@ -16,7 +16,7 @@ if (form) {
     if (error) {
       msg.innerText = error.message;
     } else {
-      window.location.href = "dashboard.html";
+      window.location.href = "dashboardui.html";
     }
   });
 }

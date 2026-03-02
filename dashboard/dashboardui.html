@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard Buttons</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
     :root{
       --bg:#0b1220;
@@ -92,6 +93,10 @@
       color:var(--muted);
       margin-top:4px;
     }
+    a{
+      text-decoration: none;
+      color: whitesmoke;
+    }
   </style>
 </head>
 <body>
@@ -99,46 +104,34 @@
     <h1>Dashboard</h1>
 
     <div class="grid">
-      <button class="dash-btn" type="button">
-        <span class="icon">🏢</span>
-        <span>
-          <div class="title">Total Branches</div>
-          <div class="subtitle">View all branches</div>
-        </span>
-      </button>
+   
 
-      <button class="dash-btn" type="button">
+      <button class="dash-btn" type="button" data-aos="fade-left" data-aos-duration="500">
+        <a href="../deposit fees/fees_history.html" style="display: flex; justify-content: center; align-items: center; gap: 3em;">
+        <span class="icon">💰</span>
+     
+          <div class="title" id="deposit_fees" >Deposit Fees</div>
+         
+        
+    
+        </a>
+      </button>
+       <button class="dash-btn" type="button" data-aos="fade-left" data-aos-duration="900">
+        <a href="dashboard.html"></a>
         <span class="icon">👨‍🎓</span>
         <span>
-          <div class="title">Total Students</div>
-          <div class="subtitle">Student strength</div>
+          <div class="title" id="register_student">Register Student</div>
+          <div class="subtitle"></div>
         </span>
+        </a>
       </button>
 
-      <button class="dash-btn" type="button">
-        <span class="icon">👩‍🏫</span>
-        <span>
-          <div class="title">Total Teachers</div>
-          <div class="subtitle">Faculty count</div>
-        </span>
-      </button>
-
-      <button class="dash-btn" type="button">
-        <span class="icon">💰</span>
-        <span>
-          <div class="title">Total Fees Collected</div>
-          <div class="subtitle">Payments summary</div>
-        </span>
-      </button>
-
-      <button class="dash-btn" type="button">
-        <span class="icon">📊</span>
-        <span>
-          <div class="title">Result/Marks</div>
-          <div class="subtitle">Exams & performance</div>
-        </span>
-      </button>
     </div>
   </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

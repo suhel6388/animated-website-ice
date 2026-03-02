@@ -7,7 +7,7 @@ async function checkAuth() {
 
   // If logged in & on login page → redirect
   if (session && path.includes("login.html")) {
-    window.location.href = "dashboard.html";
+    window.location.href = "dashboardui.html";
   }
 
   // If NOT logged in & on protected page → redirect

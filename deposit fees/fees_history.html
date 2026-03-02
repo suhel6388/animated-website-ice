@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fees Deposit</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <style>
 *{
@@ -121,7 +123,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 <body>
 
-<div class="container">
+<div class="container" data-aos="fade-right" data-aos-duration="500">
   <h2>Fees Deposit Form</h2>
 
   <form id="feesForm">
@@ -165,7 +167,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 <script src="supabase.js"></script>
 <script src="script.js"></script>
 
-
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
 </body>
 </html>
