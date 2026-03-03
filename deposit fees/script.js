@@ -44,7 +44,7 @@ document.getElementById("feesForm").addEventListener("submit", async(e)=>{
     alert("Fees added successfully!");
   }
   document.getElementById("history").innerHTML += row;
-  // document.getElementById("feesForm").reset();
+  document.getElementById("feesForm").reset();
 
   // reset date again
   document.getElementById("date").valueAsDate = new Date();
