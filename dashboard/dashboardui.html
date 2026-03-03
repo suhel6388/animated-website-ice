@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dashboard Buttons</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.tailwindcss.com"></script>   
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     :root{
       --bg:#0b1220;
@@ -97,13 +99,24 @@
       text-decoration: none;
       color: whitesmoke;
     }
+    #logout{
+      color: black; 
+      background-color: aqua;
+      width: 6rem;
+      height: 2rem;
+      border-radius: 0.2rem;
+
+    }
   </style>
 </head>
 <body>
+   <button id="logout" onclick="logout()">Logout</button>
   <div class="wrap">
     <h1>Dashboard</h1>
+   
 
     <div class="grid">
+
    
 
       <button class="dash-btn" type="button" data-aos="fade-left" data-aos-duration="500">
@@ -128,8 +141,16 @@
 
     </div>
   </div>
+  <script>
+  async function logout() {
+  await supabase_client.auth.signOut();
+  window.location.href = "login.html";
+}
+
+  </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../supabase/supabase.js"></script>
   <script>
     AOS.init();
   </script>
